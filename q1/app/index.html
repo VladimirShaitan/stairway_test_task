@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My App</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="lib/angular-material/angular-material.min.css">
+        <link rel="stylesheet" href="app.css">
+    </head>
+
+    <body ng-app="MyApp" >
+
+        <header class="fixed">
+            <md-toolbar>
+                <md-toolbar-row>
+                    <h2>Test #1</h2>
+                </md-toolbar-row>
+            </md-toolbar>
+        </header>
+
+
+
+        <section class="main-content">
+            <div layout="row"  class="slider-row-wrapper">
+                <slider-slides flex="" ></slider-slides>
+            </div>
+            <md-divider ></md-divider>
+            <div layout="row" class="bottom-wrapper">
+                <div  class="last_block_item" flex="" ng-controller="tableController">
+                    <md-content>
+
+                        <md-list class="" flex>
+                            <h2 class="md-display-1">Impressions table</h2>
+                                <md-list-item class="md-3-line">
+                                    <div  class="md-list-item-text" layout="column"><h4>Slide id</h4></div>
+                                    <div class="md-list-item-text" layout="column"><h4>Slide impression</h4></div>
+                                    <div class="md-list-item-text">Action</div>
+                                </md-list-item>
+
+                            <md-divider ></md-divider>
+
+
+                            <md-list-item class="md-3-line"  ng-repeat="(id, item) in slides">
+                                <div  class="md-list-item-text"><h4>{{id+1}}</h4></div>
+                                <div class="md-list-item-text" ><h4>{{item.impression}}</h4></div>
+                                <div class="md-list-item-text" ng-click="showAlert($event, id)"><md-button class="md-fab md-button md-ink-ripple" >More</md-button></div>
+                                <md-divider ></md-divider>
+                            </md-list-item>
+
+                    </md-content>
+                </div>
+
+                <div class="last_block_item" flex="">
+                    <h2 class="md-display-1">Slide adding form</h2>
+                    <form ng-controller="formController" ng-submit="addNewSlide()">
+                        <md-input-container class="md-block">
+                            <label>Slide content</label>
+                            <textarea name="content" ng-model="content" md-maxlength="40" rows="5" md-select-on-focus></textarea>
+                        </md-input-container>
+                        <md-button  type="submit" class="md-raised md-primary">Add slide</md-button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+        <script src="lib/angular/angular.min.js"></script>
+        <script src="lib/angular-animate/angular-animate.js"></script>
+        <script src="lib/angular-aria/angular-aria.min.js"></script>
+        <script src="lib/angular-material/angular-material.min.js"></script>
+        <script src="app.js"></script>
+
+    </body>
+</html>
